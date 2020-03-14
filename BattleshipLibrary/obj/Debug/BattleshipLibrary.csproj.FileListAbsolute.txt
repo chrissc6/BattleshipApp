@@ -1,0 +1,5 @@
+C:\Users\CHRIS\source\repos\BattleshipApp\BattleshipLibrary\bin\Debug\BattleshipLibrary.dll
+C:\Users\CHRIS\source\repos\BattleshipApp\BattleshipLibrary\bin\Debug\BattleshipLibrary.pdb
+C:\Users\CHRIS\source\repos\BattleshipApp\BattleshipLibrary\obj\Debug\BattleshipLibrary.csprojAssemblyReference.cache
+C:\Users\CHRIS\source\repos\BattleshipApp\BattleshipLibrary\obj\Debug\BattleshipLibrary.dll
+C:\Users\CHRIS\source\repos\BattleshipApp\BattleshipLibrary\obj\Debug\BattleshipLibrary.pdb
