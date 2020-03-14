@@ -16,6 +16,12 @@ namespace Battleship
 
             PlayerInfoModel player1 = CreatePlayer("Player 1"); //can be thought of as active player
             PlayerInfoModel player2 = CreatePlayer("Player 2"); //can be thought of as opponent
+            Console.WriteLine("BATTLESHIP");
+            Console.WriteLine($"{player1.UserName} vs {player2.UserName}");
+            Console.WriteLine();
+            Console.WriteLine($"{player1.UserName} will go first");
+            Console.WriteLine("Press ENTER when ready");
+            Console.ReadLine();
             PlayerInfoModel winner = null;
 
             do
@@ -43,7 +49,7 @@ namespace Battleship
 
         private static void WelcomeMessage()
         {
-            Console.WriteLine("Welcome to Battleship");
+            Console.WriteLine("Welcome to BATTLESHIP");
             Console.WriteLine("Created by chrissc6");
             Console.WriteLine();
         }
@@ -52,6 +58,7 @@ namespace Battleship
         {
             Console.WriteLine($"Player information for {player}");
             PlayerInfoModel output = new PlayerInfoModel();
+            ShowGridBlank();
             output.UserName = AskForUserName(player);
             GameLogic.InitializeGrid(output);
             PlaceShips(output);
@@ -150,6 +157,7 @@ namespace Battleship
             {
                 Console.WriteLine($"{row}{column} is a miss.");
             }
+            Console.WriteLine("=====================================");
             Console.WriteLine();
         }
 
@@ -166,6 +174,37 @@ namespace Battleship
         {
             Console.WriteLine($"Congratulations {winner.UserName} you WIN!");
             Console.WriteLine($"{winner.UserName} took {GameLogic.GetShotCount(winner)} shots.");
+        }
+
+        private static void ShowGridBlank()
+        {
+            List<string> letters = new List<string>
+            {
+                "A",
+                "B",
+                "C",
+                "D",
+                "E"
+            };
+            List<int> nums = new List<int>
+            {
+                1,
+                2,
+                3,
+                4,
+                5
+            };
+
+            foreach (string l in letters)
+            {
+                foreach (int n in nums)
+                {
+                    Console.Write($"{ l}{ n} ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
         }
     }
 }
