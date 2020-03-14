@@ -44,6 +44,7 @@ namespace Battleship
         private static void WelcomeMessage()
         {
             Console.WriteLine("Welcome to Battleship");
+            Console.WriteLine("Created by chrissc6");
             Console.WriteLine();
         }
 
@@ -96,21 +97,22 @@ namespace Battleship
 
                 if (g.Status == GridSpotStatus.Empty)
                 {
-                    Console.Write($" {g.SpotLetter} {g.SpotNumber} ");
+                    Console.Write($" {g.SpotLetter}{g.SpotNumber} ");
                 }
                 else if (g.Status == GridSpotStatus.Hit)
                 {
-                    Console.Write(" X ");
+                    Console.Write(" X  ");
                 }
                 else if (g.Status == GridSpotStatus.Miss)
                 {
-                    Console.Write(" O ");
+                    Console.Write(" O  ");
                 }
                 else
                 {
-                    Console.Write(" ? ");
+                    Console.Write(" ?  ");
                 }
             }
+            Console.WriteLine();
         }
 
         private static void RecordPlayerShot(PlayerInfoModel player1, PlayerInfoModel player2)
@@ -121,7 +123,7 @@ namespace Battleship
 
             do
             {
-                string shot = AskForShot();
+                string shot = AskForShot(player1);
                 (row, column) = GameLogic.SplitShotInfo(shot);
                 isValidShot = GameLogic.ValidateShot(player1, row, column);
 
@@ -134,11 +136,27 @@ namespace Battleship
             bool isHit = GameLogic.IdenfityShotResult(player2, row, column);
 
             GameLogic.MarkShotResult(player1, row, column, isHit);
+
+            DisplayShotGridResults(row, column, isHit);
         }
 
-        private static string AskForShot()
+        private static void DisplayShotGridResults(string row, int column, bool isHit)
         {
-            Console.WriteLine("Enter shot selection: ");
+            if (isHit)
+            {
+                Console.WriteLine($"{row}{column} is a HIT!");
+            }
+            else
+            {
+                Console.WriteLine($"{row}{column} is a miss.");
+            }
+            Console.WriteLine();
+        }
+
+        private static string AskForShot(PlayerInfoModel player)
+        {
+            Console.WriteLine();
+            Console.Write($"{player.UserName} enter shot selection: ");
             string output = Console.ReadLine();
 
             return output;
